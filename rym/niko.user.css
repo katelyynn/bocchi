@@ -44,6 +44,11 @@
         --border: 216, 210, 189;
     }
 
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .disco_showing,
     h2,
     .review_body, .review_header,
     h4,
@@ -60,9 +65,10 @@
         font-size: var(--font-size) !important;
         line-height: var(--line-height) !important;
     }
+    .disco_header_label,
     .artist_name_hdr, .artist_name,
     .album_title,
-    .bubble_header, .bubble_header a,
+    .bubble_header, .bubble_header a:not(.btn),
     #profilename {
         font-family: var(--font-h);
         font-size: var(--font-h-size) !important;
@@ -76,6 +82,8 @@
 
 
     /* btns */
+    /* artist tabs */ .artist_page_section > :is(div, a),
+    .tag_save,
     .my_catalog_rating,
     .release_view, /* add issue */ [style="text-align:right;margin:5px;font-size:0.9em;"] a,
     .header_item.main,
@@ -91,12 +99,13 @@
     /* header */ .header_icon_link, .header_profile_main, .header_links_inner .header_item,
     input[type="button"], input[type="submit"],
     .btn {
-        --btn-bg: transparent;
+        --btn-bg: linear-gradient(180deg, transparent 80%, rgb(var(--border), 0.3) 80%);
         --btn-h-bg: hsla(var(--acc), 0.2);
         --btn-a-bg: hsla(var(--acc), 0.4);
         --btn-f-bg: hsla(var(--acc), 0.4);
         --btn-border: hsl(var(--acc));
         --btn-txt: var(--txt);
+        box-shadow: 0px 2px 0px 0px hsla(var(--acc), 0.3);
 
         max-width: unset !important;
         min-width: unset !important;
@@ -111,12 +120,17 @@
         color: var(--btn-txt) !important;
         font-weight: 600 !important;
 
+        display: inline-flex;
+        text-decoration: none !important;
+
         &:hover {
             background: var(--btn-h-bg) !important;
         }
         &:not(.my_catalog_rating):focus-visible,
         &:active {
             background: var(--btn-a-bg) !important;
+            transform: translateY(2px);
+            box-shadow: none;
         }
 
         &.disabled {
@@ -141,6 +155,7 @@
         }
 
         /* active tab */
+        .artist_page_section > div&,
         &.current,
         &[id^="follow_btn"].blue_btn,
         &.has_ratings, &.has_review,
@@ -215,6 +230,7 @@
     /* album info */
 
     /* weird thing on the side that takes up space ? */
+    .artist_info_sup,
     [style="vertical-align:middle;width:415px;min-height:280px;"] {
         display: none;
     }
@@ -332,6 +348,7 @@
             border: 1px solid var(--bg) !important;
             background: #D6DFF7 !important;
             padding: 10px !important;
+            box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);
 
             .release_navigation_guidance,
             .release_page_header,
@@ -456,6 +473,16 @@
 
 
     /* tracks */
+    .section_my_catalog div#release_touch_catalog_guidance {
+        margin: unset;
+    }
+    #track_ratings {
+        margin: 4px 0 !important;
+
+        .track {
+            padding: 4px 0 !important;
+        }
+    }
     ul.tracks {
         /* in sidebar */
         border: unset;
@@ -474,6 +501,7 @@
 
             .tracklist_line {
                 display: flex;
+                align-items: center;
 
                 .tracklist_num {
                     min-width: 28px;
@@ -481,6 +509,7 @@
                     line-height: inherit;
                     margin-right: 6px;
                     text-align: left;
+                    margin: unset;
                 }
                 .tracklist_title {
                     font-size: inherit;
@@ -496,6 +525,11 @@
                         margin-left: 6px;
                         float: right;
                     }
+                }
+
+                .tracklist_track_rating {
+                    margin: 0 4px 0 0 !important;
+                    order: -1;
                 }
             }
 
@@ -539,6 +573,9 @@
 
 
     /* info */
+    .album_info_outer > tbody > tr > td {
+        padding: unset;
+    }
     .album_info {
         font-size: var(--font-size) !important;
 
@@ -548,8 +585,7 @@
 
             tr {
                 display: flex;
-                align-items: center;
-                min-height: 20px;
+                padding: 3px 0;
             }
         }
 
@@ -561,8 +597,32 @@
             flex-shrink: 0;
             width: 100px;
         }
+        .release_info_classifiers {
+            font-size: inherit;
+            line-height: inherit;
+        }
         td {
             padding: 0 !important;
+        }
+    }
+    .release_page_header {
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        height: fit-content;
+        margin-bottom: 5px;
+        display: flex;
+
+        h2 {
+            color: var(--acc-txt);
+            margin: unset;
+        }
+    }
+    .release_right_column .section_outer {
+        padding: 10px 0 !important;
+        margin: 0 10px !important;
+
+        .color_bar {
+            display: none;
         }
     }
 
@@ -811,6 +871,123 @@
             content: 'note ';
             color: #C99630;
             font-weight: 600;
+        }
+    }
+
+
+    /* buttons on album page */
+    .release_my_catalog {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        line-height: var(--line-height);
+    }
+    .my_catalog_tags, .my_catalog_review,
+    .my_catalog_catalog {
+        line-height: inherit;
+    }
+    .catalog_btn, .format_btn, .review_save_btn, .review_btn, .track_rating_btn, .listening_btn, .notes_btn, .more_btn, .tag_btn {
+        margin: unset;
+    }
+
+
+    /* artist followers */
+    .label_num_followers {
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        margin-left: 4px;
+        color: var(--txt-s);
+
+        /* ur friends */
+        div {
+            margin-top: 4px !important;
+        }
+    }
+
+
+    /* artist info */
+    .artist_info {
+        .info_hdr {
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            color: var(--txt-s);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .info_content {
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            margin-bottom: 10px;
+        }
+    }
+
+
+    /* artist tabs */
+    .section_artist_page_section_nav {
+        padding: 10px 0;
+
+        .artist_page_section_nav {
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            height: fit-content;
+            border-radius: unset;
+        }
+    }
+    .artist_page_section {
+        display: flex;
+        gap: 4px;
+
+        & > :is(div, a) {
+            &, &:hover {
+                /* default rym css uses !important on :hover, must override like this */
+                color: var(--txt) !important;
+            }
+            font-weight: 600 !important;
+
+            h2 {
+                color: inherit !important;
+                font-weight: inherit;
+            }
+            .subtext {
+                color: var(--txt-s);
+                margin-left: 6px;
+                font-size: var(--font-size);
+                line-height: var(--line-height);
+            }
+        }
+    }
+
+    .section_artist_discography {
+        padding: unset !important;
+
+        /* search */
+        .disco_search {
+            border: unset;
+            background: unset;
+            border-radius: unset;
+            line-height: var(--line-height);
+            margin: unset;
+
+            input {
+                width: 100%;
+                margin: unset;
+                height: fit-content;
+            }
+
+            .disco_search_icon {
+                display: none;
+            }
+        }
+
+        .disco_header_top {
+            margin: 10px 0 !important;
+            height: fit-content;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+
+            .disco_showing {
+                margin-left: 4px;
+            }
         }
     }
 }
