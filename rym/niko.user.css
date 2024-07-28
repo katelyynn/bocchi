@@ -9,7 +9,7 @@
 
 @-moz-document domain("rateyourmusic.com") {
     :root {
-        --font: Verdana, Tahoma, sans-serif;
+        --font: Verdana, Tahoma, Microsoft Sans Serif, Arial, Helvetica, sans-serif;
         --font-size: 11px;
         --line-height: calc(var(--font-size) + 3px);
 
@@ -17,13 +17,24 @@
         --font-h-size: 22px;
         --line-h-height: calc(var(--font-h-size) + 3px);
     }
+    html {
+        --mono-a: rgb(var(--border)) !important;
+        --mono-f8: var(--bg) !important;
+    }
     .theme_light {
         --bg: #fff;
         --txt: #000;
+        --txt-s: #868686;
         --acc: 129, 182, 243;
+        --acc-txt: rgb(74, 148, 231);
         --border: 187, 187, 187;
     }
 
+    .review_body, .review_header,
+    h4,
+    div.bubble_header.profile_header,
+    .small,
+    .mbgen,
     textarea,
     .or_q_ownership,
     .comment,
@@ -34,16 +45,25 @@
         font-size: var(--font-size) !important;
         line-height: var(--line-height) !important;
     }
+    .artist_name_hdr, .artist_name,
+    .album_title,
     .bubble_header, .bubble_header a,
     #profilename {
         font-family: var(--font-h);
         font-size: var(--font-h-size) !important;
         line-height: var(--line-h-height) !important;
         font-weight: 600 !important;
+        padding: unset;
+        margin: unset;
+        color: var(--acc-txt) !important;
     }
 
 
     /* btns */
+    .ui_button,
+    .comment_post_btn, .comment_post_add_btn, .comment_cancel_btn,
+    .expand_button,
+    .commentbody + div a,
     /* submit media links */ .page_release_art_frame [style="text-align:center;max-width:100%;margin:0 auto;margin-top:0.5em;"] a,
     /* prev / next */ .release_navigation_guidance a,
     /* show track credits */ .track_credit_show_link,
@@ -80,12 +100,49 @@
             background: var(--btn-a-bg) !important;
         }
 
+        &.disabled {
+            --btn-bg: transparent;
+            --btn-h-bg: rgba(var(--acc), 0.1);
+            --btn-a-bg: rgba(var(--acc), 0.2);
+            --btn-f-bg: rgba(var(--acc), 0.4);
+            --btn-border: rgba(var(--acc), 0.6);
+            --btn-txt: var(--txt-s);
+        }
+
+        &#shoutbox_dummybutton {
+            width: fit-content !important;
+            height: fit-content !important;
+        }
+
         /* active tab */
         &.has_ratings, &.has_review,
         &[style="background: var(--gen-blue-light);"] {
             background: var(--btn-f-bg) !important;
         }
     }
+
+    [style="background:var(--mono-f8); height:50px; border:var(--mono-a) 1px solid;"] {
+        border: unset !important;
+        background: unset !important;
+        height: fit-content !important;
+        margin-top: 4px;
+    }
+    .commentbutton {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* tabs */
+    .musictoolbar {
+        display: flex;
+        gap: 4px;
+        padding: unset;
+
+        a {
+            margin: unset;
+        }
+    }
+
     input, select, textarea, .input_auto_resize_frame, .input_auto_resize_frame::after {
         --input-bg: transparent;
         --input-h-bg: rgba(var(--border), 0.15);
@@ -101,6 +158,7 @@
         font-size: var(--font-size) !important;
         line-height: var(--line-height) !important;
         color: var(--input-txt) !important;
+        min-height: 20px;
 
         &:hover {
             background: var(--input-h-bg) !important;
@@ -117,5 +175,85 @@
     /* weird thing on the side that takes up space ? */
     [style="vertical-align:middle;width:415px;min-height:280px;"] {
         display: none;
+    }
+
+
+    /* list */
+    #allNotifications {
+        border: 1px solid rgb(var(--border)) !important;
+
+        .mbgen td,
+        .mbgen {
+            border: none !important;
+        }
+    }
+    .mbgen {
+        border: 1px solid rgb(var(--border));
+    }
+    .mbgen td, #userlists td, #useralbums td, #userrec td, .discography td {
+        padding: 2px;
+        border-left: 1px solid rgb(var(--border));
+    }
+    .mbgen td:last-child {
+        border-right: 1px solid rgb(var(--border));
+    }
+
+
+    /* content */
+    .bubble_content {
+        background: var(--bg) !important;
+        border: 1px solid rgb(var(--border)) !important;
+        padding: 10px !important;
+
+        [style="vertical-align:top;width:380px"],
+        [style="vertical-align:top;padding-right:10px;"],
+        & > [style="padding:14px;"] {
+            padding: unset !important;
+        }
+
+        /* shouts */
+        [style="vertical-align:top;width:380px"] {
+            width: 390px !important;
+            padding-left: 10px !important;
+        }
+    }
+
+    h4 {
+        color: var(--txt);
+        font-weight: 600;
+        margin: unset !important;
+        padding: 3px 0;
+    }
+
+
+    /* credits */
+    .section_credits {
+        .credits {
+            font-size: var(--font-size) !important;
+            line-height: var(--line-height) !important;
+            background: var(--bg) !important;
+            border: 1px solid rgb(var(--border)) !important;
+            border-radius: unset !important;
+            padding: 10px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            li {
+                padding: unset;
+                font-size: inherit;
+                line-height: inherit;
+            }
+
+            .expand_button {
+                margin-top: unset;
+                margin-bottom: unset;
+            }
+        }
+
+        .color_bar {
+            display: none;
+        }
     }
 }
