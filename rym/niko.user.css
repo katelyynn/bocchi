@@ -20,6 +20,8 @@
         --font-h: Trebuchet MS, var(--font);
         --font-h-size: 22px;
         --line-h-height: calc(var(--font-h-size) + 3px);
+
+        --hue: 212;
     }
     html {
         --mono-a: rgb(var(--border)) !important;
@@ -28,11 +30,16 @@
         --link-text-default: var(--acc-txt) !important;
         --link-text-hover: var(--acc-txt) !important;
     }
+    .theme_light :is(
+        .my_catalog_rating,
+        .or_q_rating_date_s,
+        .rating_pct
+    ),
     .theme_light {
         --bg: #fff;
         --txt: #000;
         --txt-s: #7F7C73;
-        --acc: 129, 182, 243;
+        --acc: var(--hue), 83%, 73%;
         --acc-txt: #215DC6;
         --border: 216, 210, 189;
     }
@@ -61,6 +68,7 @@
         font-size: var(--font-h-size) !important;
         line-height: var(--line-h-height) !important;
         font-weight: 600 !important;
+        font-style: italic;
         padding: unset;
         margin: unset;
         color: var(--acc-txt) !important;
@@ -68,6 +76,8 @@
 
 
     /* btns */
+    .my_catalog_rating,
+    .release_view, /* add issue */ [style="text-align:right;margin:5px;font-size:0.9em;"] a,
     .header_item.main,
     .ui_button,
     .comment_post_btn, .comment_post_add_btn, .comment_cancel_btn,
@@ -82,10 +92,10 @@
     input[type="button"], input[type="submit"],
     .btn {
         --btn-bg: transparent;
-        --btn-h-bg: rgba(var(--acc), 0.2);
-        --btn-a-bg: rgba(var(--acc), 0.4);
-        --btn-f-bg: rgba(var(--acc), 0.4);
-        --btn-border: rgb(var(--acc));
+        --btn-h-bg: hsla(var(--acc), 0.2);
+        --btn-a-bg: hsla(var(--acc), 0.4);
+        --btn-f-bg: hsla(var(--acc), 0.4);
+        --btn-border: hsl(var(--acc));
         --btn-txt: var(--txt);
 
         max-width: unset !important;
@@ -104,20 +114,22 @@
         &:hover {
             background: var(--btn-h-bg) !important;
         }
-        &:focus-visible,
+        &:not(.my_catalog_rating):focus-visible,
         &:active {
             background: var(--btn-a-bg) !important;
         }
 
         &.disabled {
             --btn-bg: transparent;
-            --btn-h-bg: rgba(var(--acc), 0.1);
-            --btn-a-bg: rgba(var(--acc), 0.2);
-            --btn-f-bg: rgba(var(--acc), 0.4);
-            --btn-border: rgba(var(--acc), 0.6);
+            --btn-h-bg: hsla(var(--acc), 0.1);
+            --btn-a-bg: hsla(var(--acc), 0.2);
+            --btn-f-bg: hsla(var(--acc), 0.4);
+            --btn-border: hsla(var(--acc), 0.6);
             --btn-txt: var(--txt-s);
         }
 
+        &.my_catalog_rating,
+        &.release_view,
         &.header_item,
         &.comment_post_btn, &.comment_post_add_btn, &.comment_cancel_btn,
         &#shoutbox_dummybutton {
@@ -129,11 +141,26 @@
         }
 
         /* active tab */
+        &.current,
         &[id^="follow_btn"].blue_btn,
         &.has_ratings, &.has_review,
         &[style="background: var(--gen-blue-light);"] {
             background: var(--btn-f-bg) !important;
         }
+    }
+    /* add issue */
+    [style="text-align:right;margin:5px;font-size:0.9em;"] {
+        margin: 4px 0 0 0 !important;
+        font-size: var(--font-size) !important;
+        display: inline-flex;
+        justify-content: end;
+    }
+    /* expand all issues */
+    .section_issues .expand_button {
+        margin-top: 4px;
+        margin-bottom: unset;
+        width: fit-content;
+        display: inline-flex;
     }
 
     [style="background:var(--mono-f8); height:50px; border:var(--mono-a) 1px solid;"] {
@@ -215,6 +242,25 @@
 
 
     /* content */
+    .bubble_header {
+        background: #ECE9D8 !important;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        &.profile_header {
+            color: var(--txt) !important;
+            font-style: normal;
+        }
+
+        #profilename {
+            order: -2;
+            font-style: italic;
+        }
+        a {
+            order: -1;
+        }
+    }
     .bubble_content {
         background: var(--bg) !important;
         border: 1px solid rgb(var(--border)) !important;
@@ -320,7 +366,7 @@
 
     /* header */
     header {
-        background: var(--bg);
+        background: #F1F2EE;
         box-shadow: unset;
         font-size: var(--font-size);
         line-height: var(--line-height);
@@ -396,11 +442,11 @@
     .header_item.main {
         .logo_header {
             background: var(--rym-icon);
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             background-size: 100%;
             border-radius: unset;
-            margin: unset;
+            margin: -1px 0;
         }
         .logo_name {
             padding-left: 6px;
@@ -473,6 +519,298 @@
                     border-radius: unset !important;
                 }
             }
+        }
+    }
+
+
+    /* icons generic */
+    .fa, .fas {
+        width: 16px;
+        height: 16px;
+        margin: -1px 0;
+        font-size: inherit;
+        line-height: inherit;
+        display: flex;
+
+        &:before {
+            display: none;
+        }
+    }
+
+
+    /* info */
+    .album_info {
+        font-size: var(--font-size) !important;
+
+        tbody {
+            display: flex;
+            flex-direction: column;
+
+            tr {
+                display: flex;
+                align-items: center;
+                min-height: 20px;
+            }
+        }
+
+        .info_hdr {
+            color: var(--txt-s);
+            font-weight: 600;
+            font-size: inherit;
+            padding: 0;
+            flex-shrink: 0;
+            width: 100px;
+        }
+        td {
+            padding: 0 !important;
+        }
+    }
+
+
+    /* set rating */
+    .my_catalog_rating {
+        margin-right: unset;
+        opacity: unset !important;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        &:has(.star-0m) {
+            --star: 0;
+            --hue: 212;
+        }
+        &:has(.star-1m) {
+            --star: 0.5;
+            --hue: 208;
+        }
+        &:has(.star-2m) {
+            --star: 1;
+            --hue: 193;
+        }
+        &:has(.star-3m) {
+            --star: 1.5;
+            --hue: 133;
+        }
+        &:has(.star-4m) {
+            --star: 2;
+            --hue: 87;
+        }
+        &:has(.star-5m) {
+            --star: 2.5;
+            --hue: 42;
+        }
+        &:has(.star-6m) {
+            --star: 3;
+            --hue: 17;
+        }
+        &:has(.star-7m) {
+            --star: 3.5;
+            --hue: -2;
+        }
+        &:has(.star-8m) {
+            --star: 4;
+            --hue: 328;
+        }
+        &:has(.star-9m) {
+            --star: 4.5;
+            --hue: 284;
+        }
+        &:has(.star-10m) {
+            --star: 5;
+            --hue: 250;
+        }
+
+        .rating_stars {
+            height: 10px;
+            margin-right: unset;
+            background: rgb(var(--border));
+            position: relative;
+
+            &:after {
+                content: '';
+                height: 10px;
+                display: block;
+                background: hsl(var(--acc));
+                width: calc((var(--star) / 5) * 100%);
+            }
+        }
+        .rating_num {
+            width: 20px !important;
+            height: fit-content !important;
+            font-size: var(--font-size) !important;
+            line-height: var(--line-height) !important;
+            color: inherit !important;
+        }
+    }
+
+
+    /* stars based on image */
+    .or_q_rating_date_s {
+        position: relative;
+        border: none !important;
+        padding: unset !important;
+        width: 90px !important;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        display: flex;
+
+        --star: 0.0;
+        --star-t: '---';
+        --hue: 212;
+
+        &:has(img[alt^="0.50"]) {
+            --star: 0.5;
+            --star-t: '0.5';
+            --hue: 208;
+        }
+        &:has(img[alt^="1.00"]) {
+            --star: 1.0;
+            --star-t: '1.0';
+            --hue: 193;
+        }
+        &:has(img[alt^="1.50"]) {
+            --star: 1.5;
+            --star-t: '1.5';
+            --hue: 133;
+        }
+        &:has(img[alt^="2.00"]) {
+            --star: 2.0;
+            --star-t: '2.0';
+            --hue: 87;
+        }
+        &:has(img[alt^="2.50"]) {
+            --star: 2.5;
+            --star-t: '2.5';
+            --hue: 42;
+        }
+        &:has(img[alt^="3.00"]) {
+            --star: 3.0;
+            --star-t: '3.0';
+            --hue: 17;
+        }
+        &:has(img[alt^="3.50"]) {
+            --star: 3.5;
+            --star-t: '3.5';
+            --hue: -2;
+        }
+        &:has(img[alt^="4.00"]) {
+            --star: 4.0;
+            --star-t: '4.0';
+            --hue: 328;
+        }
+        &:has(img[alt^="4.50"]) {
+            --star: 4.5;
+            --star-t: '4.5';
+            --hue: 284;
+        }
+        &:has(img[alt^="5.00"]) {
+            --star: 5.0;
+            --star-t: '5.0';
+            --hue: 250;
+        }
+
+        height: 10px;
+        background: rgb(var(--border));
+
+        &:before {
+            content: '';
+            height: 10px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -5px;
+            margin-left: -45px;
+            max-width: 90px;
+            background: hsl(var(--acc));
+            width: calc((var(--star) / 5) * 100%);
+        }
+
+        &:after {
+            content: var(--star-t);
+            color: var(--txt);
+            font-weight: 600;
+            font-size: var(--font-size) !important;
+            line-height: var(--line-height) !important;
+            padding-left: calc(90px + 6px);
+            margin-top: -3px;
+        }
+
+        [title="shortcut"] {
+            display: none;
+        }
+
+        img {
+            display: none;
+        }
+    }
+
+
+    /* rating bars on profile */
+    .rating_pct {
+        border: none;
+        height: 10px !important;
+        background: hsl(var(--acc)) !important;
+
+        &#rating_pct_0 {
+            --star: 0;
+            --hue: 212;
+        }
+        &#rating_pct_1 {
+            --star: 0.5;
+            --hue: 208;
+        }
+        &#rating_pct_2 {
+            --star: 1;
+            --hue: 193;
+        }
+        &#rating_pct_3 {
+            --star: 1.5;
+            --hue: 133;
+        }
+        &#rating_pct_4 {
+            --star: 2;
+            --hue: 87;
+        }
+        &#rating_pct_5 {
+            --star: 2.5;
+            --hue: 42;
+        }
+        &#rating_pct_6 {
+            --star: 3;
+            --hue: 17;
+        }
+        &#rating_pct_7 {
+            --star: 3.5;
+            --hue: -2;
+        }
+        &#rating_pct_8 {
+            --star: 4;
+            --hue: 328;
+        }
+        &#rating_pct_9 {
+            --star: 4.5;
+            --hue: 284;
+        }
+        &#rating_pct_10 {
+            --star: 5;
+            --hue: 250;
+        }
+    }
+
+
+    /* markdown */
+    .note {
+        border: none;
+        border-left: 2px solid #C99630;
+        background: #FFFF99;
+        color: var(--txt);
+        padding: 6px 8px;
+
+        &:before {
+            content: 'note ';
+            color: #C99630;
+            font-weight: 600;
         }
     }
 }
