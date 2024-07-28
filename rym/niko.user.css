@@ -9,6 +9,10 @@
 
 @-moz-document domain("rateyourmusic.com") {
     :root {
+        --rym-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANxSURBVDhPpVPvT1tlFH56e6GX/i4UyijUUhxBasKP4OZ0LvCFaRSnQJwJH8w+z8zNaaJkM5kxix9mjDGaEH8kLIsxbHUsRtBJMnUqiBQ2sS2DUqBdc0s7etvb9tLb9vb6ttn2D/gkJ29y3pznPM8574v/C8X9swxRkp6ZYrkzdzKT/bNRFZrpTa6zYvhar7nqfYvFwuZzCsO5936LpIS//j15auiVpqamkPJ+LRbj8YmjN10XwqLcYtRWQkOfhDs5WfXJdF/nV7cPvLFfPb9ao1Ovr9/aeOvTsZ/qsrJtRK/Zni0TLKR/nz4y03+kz9aC13uG0VfdhhzVgE3+Cu7khiDecuJS6sbLVnYro4yZelNoxL2ojQkmd1+kJEnq7Xcde7azfgsOow+cKCJXvIqD5sNglDKKeApoDQA7r2F06drZWsvBYutePkpTLMbHp4zUzfX80fjUBFJFYC3xI35Ya8eXgQ8xyxkR4om8TCOgHgH0wO7OBEUpGGp2bmy7qXFmAYk50ON/cC8h2wZvzARJikOZt6FC+StcK4DnbomgZDIJRA9BWYihQBpptTqhZ1/7xY2MsY1eDUb0yOURc88j9sjbgDwMZBmyElKXL8UoyfkAyYei1AY+nUZlZVXR4XAEznd1P0c9Xo8Q4ovAPTPgvQpESAuabFf4GFiWyHrUMK/VQ5Oug6XKAl68S5QWysNvbd3ro17o0NzAygYh+JsojQLbzQBHbiNv4kLPMtLnz2B6kMVpwz9oWH4CAtIoynJp+EqdTpeiuhrVX6NBB/ziBsJ/Av4WEsBI4QucPtYJjZOIqSGutDtIZUJQMWYoFArIslx+hJTRaPR+PnbgGyg1wDzxGryEiviTqMl24KILuHwZWCWEC+4r0BtroTdYiQVQDwhotVotHLYyZ8995KA+m6x71RTbRKXwLn72zmDJ/y1q9zgRDLnBsn4cPz4OQVgDrSyKRIVcVkAgW63W8FCX/YPRQ3OnmjsiHrszkdj/vDaT3xUQCNwmw9qHEydcUKkoXL/+Tr662hQjyhM0TRcefqZcLlcRjUbrfD7fYx6Px8my7B4hk28Jh5mnt6OigaZ5RTK5lDCZdCsDAwPfDw4Ofme327ceEjxANptVcRxnSqfTWp7n9X6//1Gv19teyhkMhqTT6fR0d3cv2my2IMMw4n/YzX8jKcsjqwAAAABJRU5ErkJggg==');
+    }
+
+    :root {
         --font: Verdana, Tahoma, Microsoft Sans Serif, Arial, Helvetica, sans-serif;
         --font-size: 11px;
         --line-height: calc(var(--font-size) + 3px);
@@ -20,16 +24,20 @@
     html {
         --mono-a: rgb(var(--border)) !important;
         --mono-f8: var(--bg) !important;
+
+        --link-text-default: var(--acc-txt) !important;
+        --link-text-hover: var(--acc-txt) !important;
     }
     .theme_light {
         --bg: #fff;
         --txt: #000;
-        --txt-s: #868686;
+        --txt-s: #7F7C73;
         --acc: 129, 182, 243;
-        --acc-txt: rgb(74, 148, 231);
-        --border: 187, 187, 187;
+        --acc-txt: #215DC6;
+        --border: 216, 210, 189;
     }
 
+    h2,
     .review_body, .review_header,
     h4,
     div.bubble_header.profile_header,
@@ -60,6 +68,7 @@
 
 
     /* btns */
+    .header_item.main,
     .ui_button,
     .comment_post_btn, .comment_post_add_btn, .comment_cancel_btn,
     .expand_button,
@@ -109,12 +118,18 @@
             --btn-txt: var(--txt-s);
         }
 
+        &.header_item,
+        &.comment_post_btn, &.comment_post_add_btn, &.comment_cancel_btn,
         &#shoutbox_dummybutton {
             width: fit-content !important;
             height: fit-content !important;
         }
+        .subscribe_label_fundraiser {
+            font-size: inherit !important;
+        }
 
         /* active tab */
+        &[id^="follow_btn"].blue_btn,
         &.has_ratings, &.has_review,
         &[style="background: var(--gen-blue-light);"] {
             background: var(--btn-f-bg) !important;
@@ -232,7 +247,7 @@
             font-size: var(--font-size) !important;
             line-height: var(--line-height) !important;
             background: var(--bg) !important;
-            border: 1px solid rgb(var(--border)) !important;
+            border: unset !important;
             border-radius: unset !important;
             padding: 10px;
 
@@ -254,6 +269,210 @@
 
         .color_bar {
             display: none;
+        }
+    }
+
+
+    /* sidebar */
+    .release_left_column,
+    .artist_right_col {
+        background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+        padding: 10px !important;
+
+        .section_lists, .section_comments, .section_videos, .page_object_section,
+        /* album pages */ & > [style="padding:0px;padding-top:0;"] > .hide-for-small > div,
+        /* artist pages, but not album page selector (2nd :not()) */ & > div:not(:first-child, [style="padding:0px;padding-top:0;"]) {
+            margin-top: 10px;
+            border: 1px solid var(--bg) !important;
+            background: #D6DFF7 !important;
+            padding: 10px !important;
+
+            .release_navigation_guidance,
+            .release_page_header,
+            .page_object_section_discussion_header,
+            .artist_page_header {
+                padding: 5px 10px;
+                margin: -11px -10px 10px -10px;
+                display: flex;
+                align-items: center;
+                background: var(--bg);
+                height: 30px;
+
+                h2 {
+                    color: var(--acc-txt);
+                    margin: unset;
+                    flex: 1;
+                    height: unset;
+                    float: unset;
+                }
+                #add_to_list_btn {
+                    float: unset;
+                    margin: unset;
+                }
+            }
+
+            .release_navigation {
+                margin: unset;
+            }
+        }
+    }
+
+
+    /* header */
+    header {
+        background: var(--bg);
+        box-shadow: unset;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        height: fit-content;
+        padding: unset;
+    }
+    .header_inner {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: unset;
+        height: 30px;
+
+        .header_logo {
+            order: -5;
+        }
+        .header_links {
+            order: -4;
+        }
+        .header_search {
+            order: -3;
+            flex: 1;
+        }
+    }
+    .header_links_inner {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .divider {
+            background: rgb(var(--border)) !important;
+            height: 14px;
+            margin: 0 4px;
+            display: none;
+        }
+    }
+    .ui_search_frame_inner,
+    .ui_search_frame_outer {
+        height: fit-content;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        padding: unset !important;
+
+        .ui_search {
+            background: unset;
+            border-radius: unset;
+        }
+
+        input::placeholder {
+            text-transform: lowercase;
+        }
+
+        .ui_search_icon {
+            display: none;
+        }
+    }
+    .header_profile_main {
+        margin-left: unset;
+
+        #header_user_img {
+            width: 14px;
+            height: 14px;
+            margin: unset;
+            border-radius: unset;
+        }
+        #header_profile_username {
+            padding-left: 6px;
+            padding-right: unset;
+            background: unset !important;
+            color: var(--acc-txt) !important;
+        }
+    }
+    .header_item.main {
+        .logo_header {
+            background: var(--rym-icon);
+            width: 14px;
+            height: 14px;
+            background-size: 100%;
+            border-radius: unset;
+            margin: unset;
+        }
+        .logo_name {
+            padding-left: 6px;
+            text-transform: lowercase;
+        }
+    }
+
+
+    /* tracks */
+    ul.tracks {
+        /* in sidebar */
+        border: unset;
+        border-radius: unset;
+
+        li.track {
+            border-radius: unset;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+            color: var(--txt);
+            min-height: unset;
+            padding: 4px 10px;
+            /* blank instead of border */
+            border: none;
+            margin-bottom: 1px;
+
+            .tracklist_line {
+                display: flex;
+
+                .tracklist_num {
+                    min-width: 28px;
+                    color: var(--txt-s);
+                    line-height: inherit;
+                    margin-right: 6px;
+                    text-align: left;
+                }
+                .tracklist_title {
+                    font-size: inherit;
+                    line-height: inherit;
+                    margin: unset;
+                    padding: unset;
+                    flex: 1;
+
+                    .tracklist_duration {
+                        color: var(--txt-s);
+                        font-size: inherit;
+                        line-height: inherit;
+                        margin-left: 6px;
+                        float: right;
+                    }
+                }
+            }
+
+            /* usually a feat. */
+            [style="width:300px;padding-left:23px;"] {
+                /* width of track number */
+                padding-left: calc(28px + 6px) !important;
+            }
+            .credits {
+                margin: unset !important;
+                font-size: inherit;
+                line-height: inherit;
+                border-radius: unset;
+
+                li {
+                    color: var(--txt-s);
+                    font-size: inherit;
+                    line-height: inherit;
+                    margin: unset;
+                    padding-left: unset;
+                    border-radius: unset !important;
+                }
+            }
         }
     }
 }
