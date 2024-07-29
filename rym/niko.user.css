@@ -166,8 +166,9 @@
     }
 
 
+    p[style="font-size:1.6em"],
     .disco_showing,
-    h2,
+    h2, h5,
     .review_body, .review_header,
     h4,
     div.bubble_header.profile_header,
@@ -186,6 +187,7 @@
     body {
         color: var(--txt);
     }
+    h1,
     .disco_header_label,
     .artist_name_hdr, .artist_name,
     .album_title,
@@ -203,6 +205,7 @@
 
 
     /* btns */
+    .comments_load,
     .disco_expand_section_btn,
     .catalog_bump,
     .catalog_track_ratings, .review_supplement_expand, .rating_info_tab,
@@ -224,7 +227,7 @@
     /* header */ .header_icon_link, .header_profile_main, .header_links_inner .header_item,
     input[type="button"], input[type="submit"],
     .btn {
-        --btn-bg: linear-gradient(180deg, transparent 80%, rgb(var(--border), 0.3) 80%);
+        --btn-bg: transparent;
         --btn-h-bg: hsla(var(--acc), 0.2);
         --btn-a-bg: hsla(var(--acc), 0.4);
         --btn-f-bg: hsla(var(--acc), 0.4);
@@ -265,6 +268,7 @@
             box-shadow: 0px 1px 0px 0px hsla(var(--acc), 0.3);
         }
 
+        &.loading,
         &.disabled {
             --btn-bg: transparent;
             --btn-h-bg: hsla(var(--acc), 0.1);
@@ -331,6 +335,7 @@
         --input-txt: var(--txt);
 
         border: 1px solid rgb(var(--border)) !important;
+        box-shadow: 0px 2px 0px 0px rgba(var(--border), 0.2);
         outline: none !important;
         padding: 2px 6px !important;
         border-radius: unset !important;
@@ -363,6 +368,7 @@
     /* list */
     #allNotifications {
         border: 1px solid rgb(var(--border)) !important;
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
 
         .mbgen td,
         .mbgen {
@@ -401,6 +407,7 @@
         background: var(--bg) !important;
         border: 1px solid rgb(var(--border)) !important;
         padding: 10px !important;
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
 
         [style="vertical-align:top;width:380px"],
         [style="vertical-align:top;padding-right:10px;"],
@@ -1017,6 +1024,7 @@
         margin: unset;
         padding: unset;
         border: 1px solid rgb(var(--border));
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
 
         tr {
             background: transparent !important;
@@ -1024,6 +1032,37 @@
             td {
                 padding: 2px 6px;
                 border: unset !important;
+            }
+
+
+            /* music */
+            &[id^="page_catalog_item_"] {
+                display: flex;
+                align-items: center;
+
+                /* leave space for rating */
+                .or_q_header:nth-child(3),
+                .or_q_albumartist_td {
+                    /* same space as track ratings on album page */
+                    margin-left: 31px;
+                }
+
+                /* re-align rating text by 1px down */
+                .or_q_rating_date_s {
+                    &:after {
+                        margin-top: -2px;
+                    }
+                }
+
+                /* italics arent that legible */
+                i {
+                    font-style: normal;
+                }
+
+                /* make album text the main part */
+                .or_q_albumartist_td {
+                    flex: 1;
+                }
             }
         }
     }
@@ -1331,6 +1370,7 @@
         background: unset;
         padding: 6px;
         border: 1px solid rgb(var(--border));
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
 
         display: flex;
         flex-direction: column;
@@ -1415,12 +1455,46 @@
             gap: 4px;
             line-height: inherit;
             margin: unset;
-            overflow: hidden;
+            /*overflow: hidden; ruins box shadow */
 
             .navpage {
                 color: var(--txt-s);
                 text-transform: lowercase;
                 font-weight: 600;
+                /* why would you put the previous button before the page text? */
+                order: -2;
+            }
+
+            /* this removes the massive amount of page numbers which cause overflow,
+            while preserving the first few and the last page (and its accompanying navdot) */
+            .navdot,
+            .navlinknum {
+                &:not(
+                    :nth-child(1),
+                    :nth-child(2),
+                    :nth-child(3),
+                    :nth-child(4),
+                    :nth-child(5),
+                    :nth-child(6),
+                    :nth-last-child(3),
+                    :nth-last-child(2)
+                ) {
+                    background: var(--btn-bg);
+                    --btn-bg: red !important;
+                    display: none;
+                }
+            }
+
+            .navlinknext, .navlinkprev {
+                font-size: 0 !important;
+
+                &:after {
+                    content: 'next';
+                    font-size: var(--font-size);
+                }
+                &.navlinkprev:after {
+                    content: 'prev';
+                }
             }
 
             a {
