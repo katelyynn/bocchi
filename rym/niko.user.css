@@ -22,6 +22,9 @@
         --line-h-height: calc(var(--font-h-size) + 3px);
 
         --hue: 212;
+
+        --full-w: 1300px;
+        --sidebar-w: 450px;
     }
     html {
         --mono-a: rgb(var(--border)) !important;
@@ -74,6 +77,73 @@
         text-decoration: underline;
     }
 
+
+    #content_wrapper {
+        display: flex;
+        justify-content: center;
+        padding: unset !important;
+        margin: unset !important;
+        max-width: unset !important;
+
+        & > div:not(#content) {
+            display: none;
+        }
+    }
+    #content {
+        padding: 30px 0 0 0 !important;
+        margin: unset;
+        max-width: var(--full-w);
+        width: 100%;
+
+        /* album page */
+        [style="max-width:1700px; margin: 0px auto;"] > .row {
+            display: flex;
+            width: var(--full-w);
+
+            .column_container_left {
+                width: unset;
+                flex-shrink: 0;
+                width: var(--sidebar-w);
+            }
+            .release_right_column {
+                width: unset;
+                flex: 1;
+            }
+        }
+
+        /* artist page */
+        .artist_page > .row {
+            display: flex;
+
+            &:before, &:after {
+                display: none;
+            }
+
+            #column_container_left {
+                width: unset;
+                flex: 1;
+                position: static;
+
+                .artist_left_col {
+                    max-width: unset;
+                }
+            }
+            .artist_right_col {
+                position: static;
+                order: -1;
+                width: unset;
+                flex-shrink: 0;
+                width: var(--sidebar-w);
+            }
+        }
+    }
+
+    /* profiles slight outer padding */
+    [style="vertical-align: top; text-align:left;"] {
+        padding: unset !important;
+    }
+
+
     .disco_showing,
     h2,
     .review_body, .review_header,
@@ -86,7 +156,7 @@
     .comment,
     .btn, a,
     #content,
-    body {
+    html, body {
         font-family: var(--font);
         font-size: var(--font-size) !important;
         line-height: var(--line-height) !important;
@@ -165,8 +235,8 @@
         &:not(.my_catalog_rating):focus-visible,
         &:active {
             background: var(--btn-a-bg) !important;
-            transform: translateY(2px);
-            box-shadow: none;
+            transform: translateY(1px);
+            box-shadow: 0px 1px 0px 0px hsla(var(--acc), 0.3);
         }
 
         &.disabled {
@@ -269,16 +339,12 @@
             border: none !important;
         }
     }
-    .mbgen {
-        border: 1px solid rgb(var(--border));
-    }
     .mbgen td, #userlists td, #useralbums td, #userrec td, .discography td {
-        padding: 2px;
-        border-left: 1px solid rgb(var(--border));
+        /*border-left: 1px solid rgb(var(--border));*/
     }
-    .mbgen td:last-child {
+    /*.mbgen td:last-child {
         border-right: 1px solid rgb(var(--border));
-    }
+    }*/
 
 
     /* content */
@@ -359,6 +425,13 @@
     }
 
 
+    /* main col */
+    .artist_left_col {
+        padding: 10px;
+        background: var(--bg);
+    }
+
+
     /* sidebar */
     .release_left_column,
     .artist_right_col {
@@ -420,6 +493,8 @@
         gap: 4px;
         padding: unset;
         height: 30px;
+        width: var(--full-w);
+        max-width: unset;
 
         .header_logo {
             order: -5;
@@ -844,7 +919,96 @@
     }
 
 
+    /* table */
+    .mbgen {
+        margin: unset;
+        padding: unset;
+        border: 1px solid rgb(var(--border));
+
+        tr {
+            td {
+                padding: 2px 6px;
+                border: unset !important;
+            }
+
+            &:nth-child(odd) {
+                background: transparent;
+            }
+        }
+    }
+    /* on profile */
+    .musictoolbar ~ table {
+        & > tbody > tr:first-child {
+            display: none;
+        }
+
+        & > tbody > tr:not(:first-child) {
+            display: flex;
+            padding-top: 10px;
+
+            & > td:not([style="text-align:center;padding-bottom:10px;"]) {
+                padding: unset !important;
+
+                &:first-child {
+                    display: flex;
+                    flex: 1;
+                }
+
+                &:last-child {
+                    padding-left: 10px !important;
+                }
+            }
+
+            /* bottom centered text */
+            td[style="text-align:center;padding-bottom:10px;"] {
+                padding: 10px 0 0 0 !important;
+            }
+        }
+    }
+
+
     /* rating bars on profile */
+    #musicrating {
+        /* header */
+        .ookii {
+            font-size: 0 !important;
+            line-height: 0 !important;
+
+            a {
+                &:before {
+                    content: 'view all ';
+                }
+                &:after {
+                    content: ' ratings';
+                }
+            }
+        }
+
+        tr:not(:first-child) {
+            display: flex;
+
+            td {
+                /* label */
+                &:has(.small) {
+                    display: flex;
+                    gap: 4px;
+                    width: 200px !important;
+                }
+
+                /* bar */
+                &:has(.rating_pct) {
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                }
+
+                /* the stars */
+                &:last-child {
+                    display: none;
+                }
+            }
+        }
+    }
     .rating_pct {
         border: none;
         height: 10px !important;
@@ -909,6 +1073,35 @@
             content: 'note ';
             color: #C99630;
             font-weight: 600;
+        }
+    }
+
+
+    /* new user */
+    .new_user_banner {
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        padding: 10px;
+        margin: 0 0 10px 0;
+        border: 1px solid #D6DFF7;
+        box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);
+        background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--bg);
+        font-weight: 600;
+
+        .btn {
+            margin: unset;
+            order: 1;
+        }
+
+        p {
+            padding: unset;
+            line-height: inherit;
+            flex: 1;
         }
     }
 
