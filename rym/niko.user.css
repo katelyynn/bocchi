@@ -10,6 +10,11 @@
 @-moz-document domain("rateyourmusic.com") {
     :root {
         --rym-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANxSURBVDhPpVPvT1tlFH56e6GX/i4UyijUUhxBasKP4OZ0LvCFaRSnQJwJH8w+z8zNaaJkM5kxix9mjDGaEH8kLIsxbHUsRtBJMnUqiBQ2sS2DUqBdc0s7etvb9tLb9vb6ttn2D/gkJ29y3pznPM8574v/C8X9swxRkp6ZYrkzdzKT/bNRFZrpTa6zYvhar7nqfYvFwuZzCsO5936LpIS//j15auiVpqamkPJ+LRbj8YmjN10XwqLcYtRWQkOfhDs5WfXJdF/nV7cPvLFfPb9ao1Ovr9/aeOvTsZ/qsrJtRK/Zni0TLKR/nz4y03+kz9aC13uG0VfdhhzVgE3+Cu7khiDecuJS6sbLVnYro4yZelNoxL2ojQkmd1+kJEnq7Xcde7azfgsOow+cKCJXvIqD5sNglDKKeApoDQA7r2F06drZWsvBYutePkpTLMbHp4zUzfX80fjUBFJFYC3xI35Ya8eXgQ8xyxkR4om8TCOgHgH0wO7OBEUpGGp2bmy7qXFmAYk50ON/cC8h2wZvzARJikOZt6FC+StcK4DnbomgZDIJRA9BWYihQBpptTqhZ1/7xY2MsY1eDUb0yOURc88j9sjbgDwMZBmyElKXL8UoyfkAyYei1AY+nUZlZVXR4XAEznd1P0c9Xo8Q4ovAPTPgvQpESAuabFf4GFiWyHrUMK/VQ5Oug6XKAl68S5QWysNvbd3ro17o0NzAygYh+JsojQLbzQBHbiNv4kLPMtLnz2B6kMVpwz9oWH4CAtIoynJp+EqdTpeiuhrVX6NBB/ziBsJ/Av4WEsBI4QucPtYJjZOIqSGutDtIZUJQMWYoFArIslx+hJTRaPR+PnbgGyg1wDzxGryEiviTqMl24KILuHwZWCWEC+4r0BtroTdYiQVQDwhotVotHLYyZ8995KA+m6x71RTbRKXwLn72zmDJ/y1q9zgRDLnBsn4cPz4OQVgDrSyKRIVcVkAgW63W8FCX/YPRQ3OnmjsiHrszkdj/vDaT3xUQCNwmw9qHEydcUKkoXL/+Tr662hQjyhM0TRcefqZcLlcRjUbrfD7fYx6Px8my7B4hk28Jh5mnt6OigaZ5RTK5lDCZdCsDAwPfDw4Ofme327ceEjxANptVcRxnSqfTWp7n9X6//1Gv19teyhkMhqTT6fR0d3cv2my2IMMw4n/YzX8jKcsjqwAAAABJRU5ErkJggg==');
+
+        --yt-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFoSURBVDhPxdI9S8NAGAfw/11srRWRFsUiodiKuKiLg/gBOomDYh3FjyH4AjqogyDiCwqCgx9AwbFOIsVBcRAsIgiK2K0IJWl7TXo+SUWbsx2c+oQfJM/9Oe4uh6YXe9P1tg/z8xiQg/Q9TPzuSMNiD5QVDHgcyxlz7DrUvkHdhergv2uTW5AJglq234f+vUP44nFPv44ELwNRglp2IIDwzCxGLq8Qmk56xhRRLiTCBLUKFaBYLEJwjtj2Lvq2dmC1BjyZb2EuAI3AS8I0TZdhGOiYmIS+tq5kXBovSwmVqPxO4HjPZJA62P+TczgrsJVZiXS34Lg/P8NpcgrBl2cl47KdM8gp+4KwKjDzeVysLOFmeRFDokSXg3kzVTl21Bm8hZSjNOFP2SQtLAy0aIhwujKNirE75x6klH/rPuN+DV0cnn4dKW2+O5LOlwpROjdaOLKkl6AuhifKvdJ7VoKd9OixVWo3tYAv3BEV9YNgeXoAAAAASUVORK5CYII=');
+        --spotify-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMvSURBVDhPVZNLbBtlFIW/f8Zjx4/Yjh9J7UY1cnc0qupEIgsQFQsQJeoSWLDtgkWK1Eo8RHhKiBIgXdAdqGTDAqEKJCiVYAFqFgiJAqKQtA2hTVOSNMR17NiOXzP/z7WpUHMXM5r57zlzz7lnlDGGe+vNz5PDff7GU5avcVjBKD5Upx38te35L9IMf/b6k6srd1t7tYvg3Quh5xyn8YplqbSHwSdHnry3lJK7wfW40/T2nHrtyPrMf4h7CE5/EzoTCupJv91C2QKiD2w/GA9tInheh47202hVaLaTH0498fezgjU9gne+7J+MxZpnqjWXjU2bShl2WhrL8hHxW0TiDoOJCKlkDCcA2/U7lKoDz786sfi+euFsKjucL85XK4H4B2c7tOqaQBj8lpLRDW1XyReNkFkkEprRQ0nGCmE8U6sVV3Ij6q1zqZOpwZ0ZT4dYvOqSGQrSH7VEfJmmV2en7WOr7PLnLYuff9esXVGEhwwnJxNCnphS732dOp+MOxORvijlusul+RLLt8ps75ieF0GxIp2w2LdPMRBz+Otmh6UbHoUxxFT7OzV9PrG6N53KyiNfzV1n4SpkBhX+sBHjRG/NYr0ElaomGlEcfsAin1dUGlAuu7fVG+dCa3uzqUypKuvVPtHt0BGyrusiBCMXoyyKJc0Pl6AuhI89LgZLSDaKbKgTH8cupLOVI7JqqjWb5dvCoz1s28bICjtatilEkahDOt6hLVMZ6e3mY+U639uZ0VY2PcSjGkecdxmIGoaHYE/KkE5aApJACVlRjNzccsQHjXB2Y8biNT2rxo8zXBhhPncfUdeFpRXFjVXDdtMi6NOk0zb7cx79EajVfWgl8mSmf9a8+sIvHOwFaWJKnQgMqNNzPxm21iWFHbFUyOjq6s4vU42PKR4cl9Glv1ax+OOyfvnHGXPq/yjbI+ojHeAYQQE5hgP3W7TEgKXLctgVLKT7C/DQw7B8zZq9OK2PCVbv+plUTr2ULfDi0aPEA+EArpjYrrrMfiIcla7Lppo7xPTNL3hbcD3gLoJuHXxG5TN5nlY+Hgn4OSDZVwu/sXDlW+Zku5+aTbN4t1UK/gVEMmzn/UBwSgAAAABJRU5ErkJggg==');
+        --itunes-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMASURBVDhPdVJLaxNRFP4yk5lMJpmkb8a0FoWqrQsLtRuxaEURRRdatVCpjwguXHQhCC4Uu+nSRStYcCFIf4ILEcTY+EZbrdJHIu0iBlKtedimM5k7dx7exFIo1g/O4t5zvu9+55wL13X/G8eGkl0nR5bGu26+bt4sXw4Om2B8fFyamZlpdwXxFScGDsp1zRfWUv9gg8D09HTb7Ozsy9ra2lWv1xt3XAdwPAjJwaGnbxKJqamp/Wul6/CUbZTx5evXEZ7jLiuKEgooMgRBwpnhDASlHjYlCHsdXO0oFtUq622+kD3Z3d1tlXkVBxMTE0OuY12UZCkEzgWlFJZtwbYJqFaAll1A9mcK99+4yq+Sr1sJh2MehnUB0zRvcKJQRUwKYlogxPwrYhKQ0grundqBVr+OQm4JY5+Iz1ECne/ev39QEYjH432ux2M6lgVqmSDMLiEsDJ2d2Z1pYK/agMFrh9Gy1UEimcFPwvuJYVwpD5tzHKfTJ/CKxYptywE1DGiMvKJpcBnZZJENebCkrOLckQjAHKUSGfCiaDDOBU7X9Zwg+GzXZgOnTIQ6sA3Wxmqp8jrHHKW/f4admIdKdVSLTFjXIfJ8gLXewjG77/L5fDFSryLkkVGNMJqgolXYBQoXFmsrUteAkF+GTxAg8yXs2V7NtiRQxv3F9fT0vFheXk6LAQmN6jZsEVWowQjMJqXyBww2yHA4iGBQQUDy4/zhVnTsacXi4qKuaVqssoVCoXAiFotp3joez35ncfTRcxy68xTUseHSEryCD5LsR1VNDU4f34/Et2+UkeP9/f2fKgLRaDSdy+XaorfG7OHHc2isD2KX6oNLDDZUDbzkQ7iGNcfi4+QkTSaTafZoX5m7/hPL2Nk7/Ltz985wkQBz6TxsUoKMFTy5exaZTMaan583bNuOp1Kp3sHBQb3M2SDQePD6W95ft88RZNa/Bccsoj3CZc8e2DrHVvaRTX10YGBgYa28gg0CNZ2XmuGVRkVePGa69g+vRW4vfXj4aC29CYA/YzOv0Zj6lQgAAAAASUVORK5CYII=');
+        --soundcloud-icon: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHcSURBVDhPlVPLShxRED3V3TrjjCZEECWIIBiD2eksAoIgWQkushwYw4Bi5kOSrwiJ5AOSv/AHslSUkIT4QrJQNGPP9L3XU/d2m2ZwEYs+XU09Tp1b3S2ugxaAT8QI8RDrEttK8Adzz8ZRHw3h/7XrK+Dw4Dzi4ziGa0Df3sH1/sGWUMR8nfYAE0rAgPFwvRx8tr0MhlBfhuaKOjVP4G4YUKRspLc3LKY33YAs96aUA2udEugNypxqog+b9lnI6VKHMQmS1kcMb39BvP4uxJSANZb1amI7cO7xLKxzBGArY4gWXiFe3oA52cdQ4zWkOuaLs/1dpB/aSKg7Fk6/+EEF2tQlKyGNJoa2diAzDThlM1yWlxgseb6C5OUb2NFpX6+psESeKVpuQ6YWyObgikajtxIDrdJ8j0pnJ+yMqbADnid6sRoa/OTcZwSvQYuezjMXZkc8ChVQzvF3CCcLab0vjnCPmd2vkOsuhM1i3lLJ2SM/0FXrwNwi7K89yPwS7OE34MkknIRpviFNIb/3/BJl8jJ/Cz9rXmkBNT2f98HdmSpW2epl5m9YovCrEn4YUQkxY4NIcu9r6FWRkh1Jla8wY4CIBhCXUMS0Dtqjvfwb1yjiMzGlah5gpwA2bwH5rFNNh5Tg/AAAAABJRU5ErkJggg==');
     }
 
     :root {
@@ -30,8 +35,16 @@
         --mono-a: rgb(var(--border)) !important;
         --mono-f8: var(--bg) !important;
 
+        --mono-e: rgb(var(--border)) !important;
+
         --link-text-default: var(--acc-txt) !important;
         --link-text-hover: var(--acc-txt) !important;
+
+        --mono-0: var(--acc-txt) !important;
+        --text-primary: var(--txt) !important;
+        --mono-4: var(--txt) !important;
+        --mono-6: var(--txt-s) !important;
+        --mono-5: var(--mono-6) !important;
     }
     .theme_light :is(
         .my_catalog_rating,
@@ -100,14 +113,23 @@
             display: flex;
             width: var(--full-w);
 
+            &:before, &:after {
+                display: none;
+            }
+
             .column_container_left {
+                position: static;
+                order: -1;
                 width: unset;
                 flex-shrink: 0;
                 width: var(--sidebar-w);
+                border: unset;
             }
             .release_right_column {
                 width: unset;
                 flex: 1;
+                position: static;
+                overflow: hidden;
             }
         }
 
@@ -161,6 +183,9 @@
         font-size: var(--font-size) !important;
         line-height: var(--line-height) !important;
     }
+    body {
+        color: var(--txt);
+    }
     .disco_header_label,
     .artist_name_hdr, .artist_name,
     .album_title,
@@ -212,6 +237,7 @@
         border: 1px solid var(--btn-border) !important;
         outline: none !important;
         padding: 2px 6px !important;
+        margin: unset;
         border-radius: unset !important;
         background: var(--btn-bg) !important;
         font-family: var(--font);
@@ -257,11 +283,15 @@
             width: fit-content !important;
             height: fit-content !important;
         }
+        &.rating_info_tab {
+            height: fit-content !important;
+        }
         .subscribe_label_fundraiser {
             font-size: inherit !important;
         }
 
         /* active tab */
+        &[style^="background:var(--ui-detail-primary);"], &[style*="background:var(--gen-blue-dark);"],
         &.selected, &.navlinkcurrent, &.active,
         .artist_page_section > div&,
         &.current,
@@ -438,6 +468,51 @@
         background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
         padding: 10px !important;
 
+        /* album top */
+        .page_release_art_frame {
+            border: 1px solid var(--bg);
+            background: #D6DFF7 ;
+            padding: 10px;
+            box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);
+
+            .media_link_container {
+                margin: 10px 0 !important;
+                min-height: unset;
+
+                & + div {
+                    margin-top: unset !important;
+                }
+
+                .ui_media_links {
+                    font-size: var(--font-size);
+                    line-height: var(--line-height);
+                    gap: 4px;
+
+                    .ui_media_link_btn {
+                        padding: unset;
+                        margin: unset;
+                        border-radius: unset;
+                        width: 16px;
+                        height: 16px;
+                        background-color: unset;
+
+                        &.ui_media_link_btn_applemusic {
+                            background-image: var(--itunes-icon);
+                        }
+                        &.ui_media_link_btn_youtube {
+                            background-image: var(--yt-icon);
+                        }
+                        &.ui_media_link_btn_soundcloud {
+                            background-image: var(--soundcloud-icon);
+                        }
+                        &.ui_media_link_btn_spotify {
+                            background-image: var(--spotify-icon);
+                        }
+                    }
+                }
+            }
+        }
+
         .section_lists, .section_comments, .section_videos, .page_object_section,
         /* album pages */ & > [style="padding:0px;padding-top:0;"] > .hide-for-small > div,
         /* artist pages, but not album page selector (2nd :not()) */ & > div:not(:first-child, [style="padding:0px;padding-top:0;"]) {
@@ -480,12 +555,30 @@
 
     /* header */
     header {
-        background: #F1F2EE;
+        /*background: #F1F2EE;*/
         box-shadow: unset;
+        /*box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);*/
+        background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
         font-size: var(--font-size);
         line-height: var(--line-height);
         height: fit-content;
         padding: unset;
+
+        a {
+            --btn-txt: var(--bg) !important;
+        }
+
+        .header_search {
+            background: #F1F2EE;
+            /*height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+
+            .ui_search_frame_outer {
+                flex: 1;
+            }*/
+        }
     }
     .header_inner {
         display: flex;
@@ -500,7 +593,7 @@
             order: -5;
         }
         .header_links {
-            order: -4;
+            order: -2;
         }
         .header_search {
             order: -3;
@@ -552,7 +645,7 @@
             padding-left: 6px;
             padding-right: unset;
             background: unset !important;
-            color: var(--acc-txt) !important;
+            color: inherit !important;
         }
     }
     .header_item.main {
@@ -926,13 +1019,11 @@
         border: 1px solid rgb(var(--border));
 
         tr {
+            background: transparent !important;
+
             td {
                 padding: 2px 6px;
                 border: unset !important;
-            }
-
-            &:nth-child(odd) {
-                background: transparent;
             }
         }
     }
@@ -1368,6 +1459,43 @@
 
         .expand_button {
             margin: unset !important;
+        }
+    }
+
+
+    /* profile info */
+    .profilehii {
+        .mbgen:first-child {
+            tr:first-child {
+                font-weight: 600;
+            }
+        }
+
+        #follow_user a:after {
+            content: 'add';
+        }
+        #block {
+            i {
+                display: none;
+            }
+
+            &:after {
+                content: 'block';
+            }
+        }
+    }
+
+
+    /* ratings on an album */
+    .rating_info_table {
+        display: flex;
+        gap: 4px;
+        height: fit-content;
+        border-radius: unset;
+
+        .rating_info_tab {
+            justify-content: center;
+            gap: 4px;
         }
     }
 }
