@@ -205,6 +205,7 @@
 
 
     /* btns */
+    /* .bumpable actually means nothing lol */ .bump_btn[style="display: block;"],
     .comments_load,
     .disco_expand_section_btn,
     .catalog_bump,
@@ -1242,6 +1243,39 @@
         gap: 4px;
         flex-wrap: wrap;
         line-height: var(--line-height);
+
+        .clear {
+            display: none !important;
+        }
+
+        /* put bump next to rating */
+        .my_catalog_rating {
+            order: -5;
+        }
+        .my_catalog_rate_tracks {
+            order: -4;
+        }
+        .my_catalog_bump {
+            order: -3;
+
+            &:not(:has(.bump_btn[style="display: block;"])) {
+                display: none;
+            }
+        }
+
+        .my_catalog_tags {
+            order: 4;
+        }
+        .my_catalog_listening {
+            order: 5;
+        }
+
+
+        /* spacing */
+        .my_catalog_listening,
+        .my_catalog_catalog {
+            margin-left: 4px;
+        }
     }
     .my_catalog_tags, .my_catalog_review,
     .my_catalog_catalog {
