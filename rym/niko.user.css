@@ -187,6 +187,11 @@
     body {
         color: var(--txt);
     }
+    h2, h3, h4, h5 {
+        color: var(--acc-txt);
+        margin-bottom: 10px;
+    }
+    tr > .number,
     h1,
     .disco_header_label,
     .artist_name_hdr, .artist_name,
@@ -205,6 +210,7 @@
 
 
     /* btns */
+    /* heart a list */ .fav0, .fav1:not(.subtext),
     /* .bumpable actually means nothing lol */ .bump_btn[style="display: block;"],
     .comments_load,
     .disco_expand_section_btn,
@@ -284,7 +290,7 @@
         &.release_view,
         &.header_item,
         &.comment_post_btn, &.comment_post_add_btn, &.comment_cancel_btn,
-        &#shoutbox_dummybutton {
+        .commentbutton & {
             width: fit-content !important;
             height: fit-content !important;
         }
@@ -421,6 +427,10 @@
             width: 390px !important;
             padding-left: 10px !important;
         }
+    }
+    /* lists */
+    .row[style^="border:1px solid var(--mono-e)"] {
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
     }
 
     h4 {
@@ -784,9 +794,6 @@
 
 
     /* info */
-    .album_info_outer > tbody > tr > td {
-        padding: unset;
-    }
     .album_info {
         font-size: var(--font-size) !important;
 
@@ -1482,58 +1489,65 @@
                 gap: 4px;
             }
         }
+    }
 
+    #nav_bottom {
+        /* nav on list page */
         .navspan {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            line-height: inherit;
-            margin: unset;
-            /*overflow: hidden; ruins box shadow */
+            justify-content: center;
+        }
+    }
+    .navspan {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        line-height: inherit;
+        margin: unset;
+        font-size: var(--font-size);
+        /*overflow: hidden; ruins box shadow */
 
-            .navpage {
-                color: var(--txt-s);
-                text-transform: lowercase;
-                font-weight: 600;
-                /* why would you put the previous button before the page text? */
-                order: -2;
+        .navpage {
+            color: var(--txt-s);
+            text-transform: lowercase;
+            font-weight: 600;
+            /* why would you put the previous button before the page text? */
+            order: -2;
+        }
+
+        /* this removes the massive amount of page numbers which cause overflow,
+        while preserving the first few and the last page (and its accompanying navdot) */
+        .navdot,
+        .navlinknum {
+            &:not(
+                :nth-child(1),
+                :nth-child(2),
+                :nth-child(3),
+                :nth-child(4),
+                :nth-child(5),
+                :nth-child(6),
+                :nth-last-child(3),
+                :nth-last-child(2)
+            ) {
+                background: var(--btn-bg);
+                --btn-bg: red !important;
+                display: none;
             }
+        }
 
-            /* this removes the massive amount of page numbers which cause overflow,
-            while preserving the first few and the last page (and its accompanying navdot) */
-            .navdot,
-            .navlinknum {
-                &:not(
-                    :nth-child(1),
-                    :nth-child(2),
-                    :nth-child(3),
-                    :nth-child(4),
-                    :nth-child(5),
-                    :nth-child(6),
-                    :nth-last-child(3),
-                    :nth-last-child(2)
-                ) {
-                    background: var(--btn-bg);
-                    --btn-bg: red !important;
-                    display: none;
-                }
+        .navlinknext, .navlinkprev {
+            font-size: 0 !important;
+
+            &:after {
+                content: 'next';
+                font-size: var(--font-size);
             }
-
-            .navlinknext, .navlinkprev {
-                font-size: 0 !important;
-
-                &:after {
-                    content: 'next';
-                    font-size: var(--font-size);
-                }
-                &.navlinkprev:after {
-                    content: 'prev';
-                }
+            &.navlinkprev:after {
+                content: 'prev';
             }
+        }
 
-            a {
-                width: fit-content;
-            }
+        a {
+            width: fit-content !important;
         }
     }
 
@@ -1605,5 +1619,263 @@
             justify-content: center;
             gap: 4px;
         }
+    }
+
+
+    /* lists */
+    .smallcomment_area {
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
+
+        .large-4:has(&) {
+            padding: 10px !important;
+
+            & > h5 {
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    [style="padding:1.5em;"] {
+        padding: 10px !important;
+    }
+
+    #user_list {
+        background: var(--bg) !important;
+        border: 1px solid rgb(var(--border)) !important;
+        padding: 10px !important;
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
+
+        display: flex;
+        flex-direction: column;
+
+        tbody {
+            & > tr {
+                &:not(.show-for-small-table-row) {
+                    display: flex;
+                }
+                margin: unset;
+                padding: 10px;
+
+                &.trodd {
+                    background: rgba(var(--border), 40%);
+                }
+
+                .number {
+                    display: flex;
+                    justify-content: center;
+                    width: 64px;
+                }
+
+                .list_art {
+                    padding: unset;
+                    width: 120px;
+
+                    img {
+                        max-width: 120px;
+                    }
+                }
+
+                .main_entry {
+                    padding: 0 10px !important;
+
+                    .credited_name {
+                        font-size: inherit;
+                        color: inherit;
+                    }
+
+                    h3 {
+                        display: flex;
+                        font-size: var(--font-size);
+                        margin: unset;
+
+                        a {
+                            font-style: normal;
+                            font-weight: normal;
+                        }
+                    }
+
+                    .rel_date {
+                        font-size: var(--font-size);
+                    }
+                }
+            }
+        }
+    }
+
+
+    /* footer */
+    footer {
+        color: var(--txt);
+        background: #ECE9D8;
+        box-shadow: 0px 6px 0px 0px rgba(var(--border), 0.4) inset;
+        margin-top: 10px;
+        border: unset;
+
+        font-size: var(--font-size);
+        padding: 20px 0 !important;
+
+        display: flex;
+        justify-content: center;
+
+        .footer_inner {
+            width: var(--full-w);
+            max-width: unset;
+            padding: unset;
+            margin: unset;
+
+            display: flex;
+            gap: 20px;
+
+            .footer_main_section {
+                width: 200px;
+                float: unset;
+                text-align: left;
+
+                .minilogo_frame {
+                    height: fit-content;
+
+                    .minilogo {
+                        color: inherit;
+                        margin: 0 0 5px 0;
+                        font-size: inherit;
+
+                        .minilogo_text {
+                            line-height: inherit;
+                            margin: unset;
+                        }
+                    }
+                }
+            }
+
+            .footer_sections {
+                padding: unset;
+                margin: unset;
+                font-size: inherit;
+
+                display: flex;
+                gap: 20px;
+
+                .footer_section {
+                    margin: unset !important;
+                    width: 200px !important;
+
+                    .footer_header {
+                        color: var(--txt);
+                        font-weight: 600;
+                        text-transform: unset;
+                        font-size: inherit;
+                        margin-bottom: 5px;
+                    }
+
+                    .footer_sub_links {
+                        a {
+                            display: flex;
+                            gap: 20px;
+                            color: inherit !important;
+
+                            .sub {
+                                font-size: inherit;
+                                color: var(--txt-s);
+                                flex: 1;
+                                text-align: right;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    /* comments */
+    .smallcomment_area > div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 4px;
+    }
+
+    .comment {
+        border: unset !important;
+        position: relative;
+
+        tr {
+            display: flex;
+            gap: 4px;
+        }
+        td {
+            &:last-child {
+                flex: 1;
+            }
+        }
+
+        .commentheadera {
+            padding: unset !important;
+            height: fit-content;
+            margin-bottom: 5px;
+
+            display: flex;
+        }
+        .commentbody {
+            padding: unset;
+        }
+
+        .commentbody + [style="text-align:right;"] {
+            display: flex;
+            justify-content: end;
+            gap: 4px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--bg);
+            padding-left: 4px;
+            padding-top: 4px;
+
+            .comment:not(:hover, :focus-within) & {
+                opacity: 0;
+            }
+        }
+    }
+
+
+    /* types */
+    a.user {
+        color: var(--acc-txt) !important;
+    }
+
+
+    /* profile listening */
+    .profile_listening_container {
+        padding: 2px 6px;
+        border-radius: unset;
+        margin: 10px 0 0 0;
+        border: 1px solid rgb(var(--border));
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
+
+        td:has(> &) {
+            padding: unset;
+        }
+
+        .profile_set_listening_box {
+            flex-direction: row;
+            gap: 4px;
+            flex-basis: unset;
+            font-size: inherit;
+            line-height: inherit;
+            margin-right: 6px;
+        }
+    }
+
+    td {
+        padding: unset;
+    }
+
+    /*.profile_header + .bubble_content > table > tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }*/
+    .profile_header + .bubble_content > table > tbody td:last-child {
+        width: 255px !important;
     }
 }
