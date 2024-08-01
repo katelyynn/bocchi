@@ -34,13 +34,17 @@
     html {
         --mono-a: rgb(var(--border)) !important;
         --mono-f8: var(--bg) !important;
+        --mono-f: var(--bg) !important;
 
         --mono-e: rgb(var(--border)) !important;
 
         --link-text-default: var(--acc-txt) !important;
         --link-text-hover: var(--acc-txt) !important;
 
+        --gen-blue-dark: var(--acc-txt) !important;
+
         --mono-0: var(--acc-txt) !important;
+        --mono-1: var(--txt-s) !important;
         --text-primary: var(--txt) !important;
         --mono-4: var(--txt) !important;
         --mono-6: var(--txt-s) !important;
@@ -58,6 +62,13 @@
         --acc: var(--hue), 83%, 73%;
         --acc-txt: #215DC6;
         --border: 216, 210, 189;
+
+        --input-bg: #F1F2EE;
+        --note-bg: #FFFF99;
+        --note-txt: #C99630;
+
+        --sidebar-gradient: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+        --sidebar-bg: 214, 223, 247;
     }
     .theme_eve :is(
         .my_catalog_rating,
@@ -71,6 +82,13 @@
         --acc: var(--hue), 83%, 73%;
         --acc-txt: #215DC6;
         --border: 216, 210, 189;
+
+        --input-bg: #F1F2EE;
+        --note-bg: #FFFF99;
+        --note-txt: #C99630;
+
+        --sidebar-gradient: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+        --sidebar-bg: 214, 223, 247;
     }
     .theme_night :is(
         .my_catalog_rating,
@@ -78,12 +96,19 @@
         .rating_pct, .review_rating, .track_rating_disp
     ),
     .theme_night {
-        --bg: #fff;
-        --txt: #000;
+        --bg: #000;
+        --txt: #fff;
         --txt-s: #7F7C73;
-        --acc: var(--hue), 83%, 73%;
-        --acc-txt: #215DC6;
-        --border: 216, 210, 189;
+        --acc: var(--hue), 53%, 43%;
+        --acc-txt: #527dc7;
+        --border: 36, 36, 36;
+
+        --input-bg: #F1F2EE;
+        --note-bg: #33200e;
+        --note-txt: #a38e54;
+
+        --sidebar-gradient: linear-gradient(180deg, #496596 0%, #1a1d2c 100%);
+        --sidebar-bg: 98, 114, 160;
     }
 
     a:hover {
@@ -103,6 +128,7 @@
         }
     }
     #content {
+        background: var(--bg) !important;
         padding: 30px 0 0 0 !important;
         margin: unset;
         max-width: var(--full-w);
@@ -125,7 +151,9 @@
                 width: var(--sidebar-w);
                 border: unset;
             }
+            .film_right_column /* ? */,
             .release_right_column {
+                background: unset !important;
                 width: unset;
                 flex: 1;
                 position: static;
@@ -185,6 +213,7 @@
         line-height: var(--line-height) !important;
     }
     body {
+        background: var(--bg);
         color: var(--txt);
     }
     h2, h3, h4, h5 {
@@ -241,6 +270,42 @@
         --btn-border: hsl(var(--acc));
         --btn-txt: var(--txt);
         box-shadow: 0px 2px 0px 0px hsla(var(--acc), 0.3);
+
+        .musictoolbar & {
+            --btn-border: rgb(var(--border));
+            box-shadow: unset;
+
+            #totalratings, #totaltrackratings, #totalformat, #totalreviewed, #totalwanted {
+                color: var(--acc-txt);
+            }
+
+            &[style="background: var(--gen-blue-light);"] {
+                --btn-f-bg: var(--bg);
+                box-shadow: 0px 2px 0px 0px var(--bg);
+                z-index: 10;
+                border-bottom: unset !important;
+                padding-top: 4px !important;
+                padding-bottom: 4px !important;
+                margin-top: -4px;
+                position: relative;
+
+                &:before, &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    background: rgb(var(--border));
+                    bottom: -1px;
+                }
+                &:before {
+                    left: -1px;
+                }
+                &:after {
+                    right: -1px;
+                }
+            }
+        }
 
         max-width: unset !important;
         min-width: unset !important;
@@ -483,15 +548,15 @@
     /* sidebar */
     .release_left_column,
     .artist_right_col {
-        background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+        background: var(--sidebar-gradient);
         padding: 10px !important;
 
         /* album top */
         .page_release_art_frame {
             border: 1px solid var(--bg);
-            background: #D6DFF7 ;
+            background: rgb(var(--sidebar-bg));
             padding: 10px;
-            box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);
+            box-shadow: 0px 4px 0px 0px rgba(var(--sidebar-bg), 0.5);
 
             .media_link_container {
                 margin: 10px 0 !important;
@@ -536,9 +601,9 @@
         /* artist pages, but not album page selector (2nd :not()) */ & > div:not(:first-child, [style="padding:0px;padding-top:0;"]) {
             margin-top: 10px;
             border: 1px solid var(--bg) !important;
-            background: #D6DFF7 !important;
+            background: rgb(var(--sidebar-bg)) !important;
             padding: 10px !important;
-            box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);
+            box-shadow: 0px 4px 0px 0px rgba(var(--sidebar-bg), 0.5);
 
             .release_navigation_guidance,
             .release_page_header,
@@ -576,7 +641,7 @@
         /*background: #F1F2EE;*/
         box-shadow: unset;
         /*box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);*/
-        background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+        background: var(--sidebar-gradient);
         font-size: var(--font-size);
         line-height: var(--line-height);
         height: fit-content;
@@ -587,7 +652,7 @@
         }
 
         .header_search {
-            background: #F1F2EE;
+            background: var(--input-bg);
             /*height: 100%;
             display: flex;
             align-items: center;
@@ -1082,7 +1147,7 @@
 
         & > tbody > tr:not(:first-child) {
             display: flex;
-            padding-top: 10px;
+            /*padding-top: 10px;*/
 
             & > td:not([style="text-align:center;padding-bottom:10px;"]) {
                 padding: unset !important;
@@ -1202,14 +1267,14 @@
     /* markdown */
     .note {
         border: none;
-        border-left: 2px solid #C99630;
-        background: #FFFF99;
+        border-left: 2px solid var(--note-txt);
+        background: var(--note-bg);
         color: var(--txt);
         padding: 6px 8px;
 
         &:before {
             content: 'note ';
-            color: #C99630;
+            color: var(--note-txt);
             font-weight: 600;
         }
     }
@@ -1223,7 +1288,7 @@
         margin: 0 0 10px 0;
         border: 1px solid #D6DFF7;
         box-shadow: 0px 4px 0px 0px rgba(214, 223, 247, 0.5);
-        background: linear-gradient(180deg, #7BA2E7 0%, #6375D6 100%);
+        background: var(--sidebar-gradient);
 
         display: flex;
         align-items: center;
@@ -1587,6 +1652,8 @@
 
     /* profile info */
     .profilehii {
+        color: var(--txt) !important;
+
         .mbgen:first-child {
             tr:first-child {
                 font-weight: 600;
@@ -1706,7 +1773,7 @@
     /* footer */
     footer {
         color: var(--txt);
-        background: #ECE9D8;
+        background: #ECE9D8 !important;
         box-shadow: 0px 6px 0px 0px rgba(var(--border), 0.4) inset;
         margin-top: 10px;
         border: unset;
@@ -1849,6 +1916,7 @@
         padding: 2px 6px;
         border-radius: unset;
         margin: 10px 0 0 0;
+        background: unset !important;
         border: 1px solid rgb(var(--border));
         box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
 
