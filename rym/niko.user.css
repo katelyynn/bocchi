@@ -34,6 +34,7 @@
     html {
         --mono-a: rgb(var(--border)) !important;
         --mono-f8: var(--bg) !important;
+        --mono-d: rgba(var(--border), 40%) !important;
         --mono-f: var(--bg) !important;
 
         --mono-e: rgb(var(--border)) !important;
@@ -303,6 +304,11 @@
                 }
                 &:after {
                     right: -1px;
+                }
+
+                &:first-child:before {
+                    height: 2px;
+                    bottom: -2px;
                 }
             }
         }
@@ -1122,6 +1128,8 @@
 
                 /* re-align rating text by 1px down */
                 .or_q_rating_date_s {
+                    margin-left: 6px !important;
+
                     &:after {
                         margin-top: -2px;
                     }
@@ -1135,6 +1143,41 @@
                 /* make album text the main part */
                 .or_q_albumartist_td {
                     flex: 1;
+                }
+
+
+                .or_q_small_album,
+                .or_q_thumb_album {
+                    width: fit-content !important;
+
+                    img {
+                        border-radius: unset !important;
+                        --w: 44px;
+                        width: var(--w);
+                        height: var(--w);
+                    }
+                }
+
+                .or_q_rating_date_d {
+                    width: fit-content;
+                    text-align: unset;
+
+                    .date_element {
+                        display: flex;
+                        gap: 4px;
+                        padding: 0 2px;
+
+                        .date_element_day,
+                        .date_element_month {
+                            font-size: var(--font-size);
+                            color: var(--txt-s);
+                        }
+                        .date_element_year {
+                            font-size: var(--font-size);
+                            color: var(--txt-s);
+                            opacity: 0.6;
+                        }
+                    }
                 }
             }
         }
