@@ -924,6 +924,13 @@
         align-items: center;
         gap: 6px;
 
+        .rating_loading {
+            line-height: var(--line-height);
+            margin: unset;
+            height: fit-content;
+            width: 116px;
+        }
+
         &:has(.star-0m) {
             --star: 0;
             --hue: 212;
