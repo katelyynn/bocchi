@@ -63,6 +63,7 @@
         --acc: var(--hue), 83%, 73%;
         --acc-txt: #215DC6;
         --border: 216, 210, 189;
+        --border-top: #ECE9D8;
 
         --input-bg: #F1F2EE;
         --note-bg: #FFFF99;
@@ -83,6 +84,7 @@
         --acc: var(--hue), 83%, 73%;
         --acc-txt: #215DC6;
         --border: 216, 210, 189;
+        --border-top: #ECE9D8;
 
         --input-bg: #F1F2EE;
         --note-bg: #FFFF99;
@@ -96,20 +98,22 @@
         .or_q_rating_date_s,
         .rating_pct, .review_rating, .track_rating_disp
     ),
+    .no-js,
     .theme_night {
-        --bg: #000;
-        --txt: #fff;
+        --bg: #161616;
+        --txt: #f3f3f3;
         --txt-s: #7F7C73;
-        --acc: var(--hue), 53%, 43%;
-        --acc-txt: #527dc7;
-        --border: 36, 36, 36;
+        --acc: var(--hue), 47%, 53%;
+        --acc-txt: #6aa1db;
+        --border: 64, 64, 64;
+        --border-top: #383838;
 
         --input-bg: #F1F2EE;
         --note-bg: #33200e;
         --note-txt: #a38e54;
 
-        --sidebar-gradient: linear-gradient(180deg, #496596 0%, #1a1d2c 100%);
-        --sidebar-bg: 98, 114, 160;
+        --sidebar-gradient: linear-gradient(180deg, #4e6285 0%, #2d3044 100%);
+        --sidebar-bg: 34, 37, 41;
     }
 
     a:hover {
@@ -463,7 +467,7 @@
 
     /* content */
     .bubble_header {
-        background: #ECE9D8 !important;
+        background: var(--border-top) !important;
         display: flex;
         align-items: center;
         gap: 4px;
