@@ -1,10 +1,10 @@
 /* ==UserStyle==
-@name           niko ^..^
-@namespace      github.com/katelyynn/niko
+@name           bocchi
+@namespace      github.com/katelyynn/bocchi
 @version        2024.0727
 @license        GPL-3.0
 @author         kate
-@updateURL      https://github.com/katelyynn/niko/raw/uwu/rym/niko.user.css
+@updateURL      https://github.com/katelyynn/bocchi/raw/uwu/rym/bocchi.user.css
 ==/UserStyle== */
 
 @-moz-document domain("rateyourmusic.com") {
@@ -52,6 +52,8 @@
         --mono-5: var(--mono-6) !important;
     }
     .theme_light :is(
+        .catalog_header,
+        .catalog_rating,
         .my_catalog_rating,
         .or_q_rating_date_s,
         .rating_pct, .review_rating, .track_rating_disp
@@ -73,6 +75,8 @@
         --sidebar-bg: 214, 223, 247;
     }
     .theme_eve :is(
+        .catalog_header,
+        .catalog_rating,
         .my_catalog_rating,
         .or_q_rating_date_s,
         .rating_pct, .review_rating, .track_rating_disp
@@ -94,6 +98,8 @@
         --sidebar-bg: 214, 223, 247;
     }
     .theme_night :is(
+        .catalog_header,
+        .catalog_rating,
         .my_catalog_rating,
         .or_q_rating_date_s,
         .rating_pct, .review_rating, .track_rating_disp
@@ -1005,6 +1011,7 @@
 
 
     /* stars based on image */
+    .catalog_rating,
     .track_rating_disp,
     .review_rating,
     .or_q_rating_date_s {
@@ -1999,5 +2006,91 @@
     }*/
     .profile_header + .bubble_content > table > tbody td:last-child {
         width: 255px !important;
+    }
+
+
+
+
+    /* catalog line */
+    .catalog_line {
+        .catalog_date {
+            height: 20px;
+            font-size: var(--font-size);
+            line-height: var(--line-height);
+
+            display: flex;
+            align-items: center;
+
+            .catalog_date_inner {
+                background: unset;
+                border-radius: unset;
+                color: inherit;
+                border: unset;
+                line-height: inherit;
+                padding: unset;
+            }
+
+            .catalog_bump {
+                margin: unset;
+            }
+        }
+
+        .catalog_header {
+            height: 20px;
+            line-height: var(--line-height);
+            border-radius: unset;
+            margin: 0 0 4px 0;
+            background: var(--input-bg);
+
+            .my_rating &,
+            &.friend {
+                background: hsla(var(--acc), 40%);
+            }
+            &.friend {
+                --hue: 160;
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            /* avatar */
+            & > div {
+                margin: unset !important;
+                border-radius: unset !important;
+                width: 20px !important;
+                height: 20px !important;
+                background-color: var(--txt-s) !important;
+            }
+
+            .catalog_user {
+                flex: 1;
+            }
+
+            .catalog_rating {
+                order: 9;
+                margin-right: calc(20px + 6px) !important;
+
+                &:after {
+                    margin-top: -2px;
+                }
+            }
+            .catalog_track_ratings,
+            .catalog_no_track_ratings {
+                width: 20px;
+                height: 20px;
+                margin: unset;
+                order: 10;
+            }
+
+            .catalog_track_ratings {
+                font-size: 0 !important;
+
+                &:after {
+                    content: '*';
+                    font-size: var(--font-size) !important;
+                }
+            }
+        }
     }
 }
