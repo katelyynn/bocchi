@@ -250,6 +250,7 @@
 
 
     /* btns */
+    .wikiupload a,
     /* heart a list */ .fav0, .fav1:not(.subtext),
     /* .bumpable actually means nothing lol */ .bump_btn[style="display: block;"],
     .comments_load,
@@ -489,6 +490,27 @@
         }
         a {
             order: -1;
+        }
+
+
+        .ribbon_frame {
+            width: fit-content;
+            height: fit-content;
+
+            .ribbon {
+                top: 0;
+                right: 0;
+                padding: unset;
+                font-size: var(--font-size);
+                color: var(--txt);
+                padding: 0 4px;
+                position: static;
+                width: fit-content;
+
+                &:before, &:after {
+                    display: none;
+                }
+            }
         }
     }
     .bubble_content {
@@ -734,11 +756,13 @@
     .header_profile_main {
         margin-left: unset;
 
-        #header_user_img {
+        .header_user_img {
             width: 14px;
             height: 14px;
             margin: unset;
             border-radius: unset;
+            background-size: cover !important;
+            background-color: var(--txt-s) !important;
         }
         #header_profile_username {
             padding-left: 6px;
@@ -1118,7 +1142,7 @@
 
     /* table */
     .mbgen {
-        margin: unset;
+        margin: unset !important;
         padding: unset;
         border: 1px solid rgb(var(--border));
         box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
@@ -1714,6 +1738,15 @@
     /* profile info */
     .profilehii {
         color: var(--txt) !important;
+        padding: unset !important;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & > br,
+        & > .clear {
+            display: none;
+        }
 
         .mbgen:first-child {
             tr:first-child {
@@ -1733,6 +1766,14 @@
                 content: 'block';
             }
         }
+    }
+
+
+    .musicmap {
+        border-radius: unset;
+        margin-bottom: 10px;
+        border: 1px solid rgb(var(--border));
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
     }
 
 
@@ -2089,6 +2130,81 @@
                 &:after {
                     content: '*';
                     font-size: var(--font-size) !important;
+                }
+            }
+        }
+    }
+
+
+    /* image gallery */
+    [action="/images/edit_caption"] {
+        display: inline-block;
+        margin-top: 1px;
+    }
+
+    [href^="/images/upload?type=u"] {
+        div:has(> h4 > &) {
+            position: absolute;
+            top: 30px;
+            right: 0;
+        }
+    }
+
+
+    /* upload image to profile */
+    .wikiupload a {
+        gap: 4px;
+    }
+
+
+    /* play history */
+    .play_history_item {
+        padding: unset;
+        height: 20px;
+
+        .play_history_artbox {
+            max-width: 20px;
+            margin-right: 6px;
+
+            .play_history_item_art {
+                border-radius: unset;
+            }
+        }
+
+        .play_history_infobox {
+            flex-direction: row;
+            flex-flow: unset;
+            flex-basis: unset;
+            gap: 6px;
+            padding: unset;
+
+            .play_history_item_date {
+                color: var(--txt-s);
+                font-size: var(--font-size);
+                line-height: var(--line-height);
+                margin: unset;
+            }
+            .play_history_separator {
+                margin: unset;
+            }
+
+            .play_history_interpunct {
+                color: var(--txt-s);
+                font-size: var(--font-size);
+                margin: unset;
+            }
+            .play_history_comment {
+                color: var(--txt-s);
+                display: inline-flex;
+
+                .rendered_text {
+                    max-width: 550px;
+                    display: -webkit-box;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-clamp: 1;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
                 }
             }
         }
