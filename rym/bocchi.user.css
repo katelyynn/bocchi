@@ -28,7 +28,7 @@
 
         --hue: 212;
 
-        --full-w: 1300px;
+        --full-w: 1400px;
         --sidebar-w: 450px;
     }
     html {
@@ -154,6 +154,7 @@
                 display: none;
             }
 
+            .film_left_column,
             .column_container_left {
                 position: static;
                 order: -1;
@@ -384,6 +385,7 @@
         }
 
         /* active tab */
+        &.catalog_btn:not(.catalog_n),
         &[style^="background:var(--ui-detail-primary);"], &[style*="background:var(--gen-blue-dark);"],
         &.selected, &.navlinkcurrent, &.active,
         .artist_page_section > div&,
@@ -464,6 +466,21 @@
             border: none !important;
         }
     }
+    #musictag {
+        border: 1px solid rgb(var(--border)) !important;
+        box-shadow: 0px 4px 0px 0px rgba(var(--border), 0.2);
+        padding: 2px;
+
+        /*&[style="display: block;"] {
+            display: grid !important;
+            grid-template-columns: 1.8fr 0.2fr;
+        } :( */
+
+
+        a {
+            font-weight: 600;
+        }
+    }
     .mbgen td, #userlists td, #useralbums td, #userrec td, .discography td {
         /*border-left: 1px solid rgb(var(--border));*/
     }
@@ -502,6 +519,7 @@
                 right: 0;
                 padding: unset;
                 font-size: var(--font-size);
+                background: hsl(var(--acc));
                 color: var(--txt);
                 padding: 0 4px;
                 position: static;
@@ -584,6 +602,7 @@
 
 
     /* sidebar */
+    .film_left_column,
     .release_left_column,
     .artist_right_col {
         background: var(--sidebar-gradient);
@@ -899,6 +918,7 @@
 
 
     /* info */
+    .film_info,
     .album_info {
         font-size: var(--font-size) !important;
 
@@ -931,6 +951,7 @@
     .release_page_header {
         font-size: var(--font-size);
         line-height: var(--line-height);
+        font-weight: 600;
         height: fit-content;
         margin-bottom: 5px;
         display: flex;
@@ -938,6 +959,7 @@
         h2 {
             color: var(--acc-txt);
             margin: unset;
+            font-weight: inherit;
         }
     }
     .release_right_column .section_outer {
@@ -1748,6 +1770,9 @@
             display: none;
         }
 
+        .mbgen {
+            margin: 0 auto !important;
+        }
         .mbgen:first-child {
             tr:first-child {
                 font-weight: 600;
@@ -2151,6 +2176,26 @@
     }
 
 
+    /* profile caption */
+    .profile_caption {
+        font-size: var(--font-size);
+        line-height: var(--line-height);
+        color: #fff;
+        display: flex;
+        justify-content: right;
+        width: unset;
+        left: 4px;
+        right: 4px;
+        bottom: 4px;
+
+        .profile_caption_text {
+            padding: 2px 6px !important;
+            transition: none !important;
+            margin: unset;
+        }
+    }
+
+
     /* upload image to profile */
     .wikiupload a {
         gap: 4px;
@@ -2173,8 +2218,7 @@
 
         .play_history_infobox {
             flex-direction: row;
-            flex-flow: unset;
-            flex-basis: unset;
+            align-items: center;
             gap: 6px;
             padding: unset;
 
